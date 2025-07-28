@@ -1,0 +1,30 @@
+#include <stdio.h>
+
+#define TAM 3  // Número de alunos
+
+// Definição da struct
+struct Aluno {
+    char nome[50];
+    char turma[10];
+};
+
+int main() {
+    struct Aluno alunos[TAM];  // Vetor de structs
+
+    // Entrada de dados
+    for (int i = 0; i < TAM; i++) {
+        printf("Digite o nome do aluno %d: ", i + 1);
+        scanf(" %[^\n]", alunos[i].nome);  // Lê string com espaços
+
+        printf("Digite a turma do aluno %d: ", i + 1);
+        scanf(" %[^\n]", alunos[i].turma);
+    }
+
+    // Exibição dos dados
+    printf("\n--- Lista de Alunos ---\n");
+    for (int i = 0; i < TAM; i++) {
+        printf("Aluno %d: Nome = %s, Turma = %s\n", i + 1, alunos[i].nome, alunos[i].turma);
+    }
+
+    return 0;
+}
