@@ -1,0 +1,48 @@
+#include <stdio.h>
+
+#define NUM_FILMES 4
+#define TAM_VETOR 2
+
+int main() {
+    // Vetor do usuário: gosta de ação (0.8) e comédia (0.6)
+    float usuario[TAM_VETOR] = {0.8, 0.6};
+
+    // Vetores dos filmes
+    char nomes[NUM_FILMES][30] = {
+        "Filme A (Ação)",
+        "Filme B (Comédia)",
+        "Filme C (Drama)",
+        "Filme D (Ação + Comédia)"
+    };
+
+    float filmes[NUM_FILMES][TAM_VETOR] = {
+        {1.0, 0.2},  // Filme A
+        {0.2, 1.0},  // Filme B
+        {0.1, 0.1},  // Filme C
+        {0.7, 0.7}   // Filme D
+    };
+
+    float pontuacoes[NUM_FILMES];
+
+    // Comparação simples: soma dos produtos das preferências
+    for (int i = 0; i < NUM_FILMES; i++) {
+        float pontuacao = 0.0;
+        for (int j = 0; j < TAM_VETOR; j++) {
+            pontuacao += usuario[j] * filmes[i][j];
+        }
+        pontuacoes[i] = pontuacao;
+        printf("%s - Pontuação: %.2f\n", nomes[i], pontuacao);
+    }
+
+    // Encontrar o filme com maior pontuação
+    int melhor = 0;
+    for (int i = 1; i < NUM_FILMES; i++) {
+        if (pontuacoes[i] > pontuacoes[melhor]) {
+            melhor = i;
+        }
+    }
+
+    printf("\n Filme recomendado: %s\n", nomes[melhor]);
+
+    return 0;
+}
