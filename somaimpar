@@ -1,0 +1,25 @@
+#include <stdio.h>
+
+#define TAM 5
+
+int main() {
+    int vetor[TAM];
+    int soma_impares = 0;
+
+    // Entrada de dados
+    printf("Digite %d números inteiros:\n", TAM);
+    for (int i = 0; i < TAM; i++) {
+        printf("Elemento %d: ", i + 1);
+        scanf("%d", &vetor[i]);
+
+        // Verifica se é ímpar e soma
+        if (vetor[i] % 2 != 0) {
+            soma_impares += vetor[i];
+        }
+    }
+
+    // Resultado
+    printf("\nSoma dos elementos ímpares: %d\n", soma_impares);
+
+    return 0;
+}
